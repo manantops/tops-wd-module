@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(28, 28, 28);
+        }
+
+        .slider {
+            width: 500px;
+            height: 350px;
+            background-color: white;
+            border-radius: 5px;
+            overflow-x: hidden;
+        }
+
+        .slider-container {
+            display: flex;
+            height: 100%;
+            transition: all .3s ease;
+        }
+
+        .slides {
+            flex: 1 0 100%;
+            font-size: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        button{
+            font-size: 20px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="display: flex; align-items: center; gap: 20px;">
+        <button id="prev">prev</button>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="slides">01</div>
+                <div class="slides">02</div>
+                <div class="slides">03</div>
+                <div class="slides">04</div>
+                <div class="slides">05</div>
+                <div class="slides">06</div>
+                <div class="slides">07</div>
+            </div>
+        </div>
+        <button id="next">next</button>
+    </div>
+
+    <script>
+        let sliderat = 0
+
+        const sliderrr = document.querySelector('.slider-container')
+        const prevbtn = document.getElementById('prev')
+        const nextbtn = document.getElementById('next')
+
+        function moveSlider(){
+            sliderrr.style.transform = `translateX(-${sliderat*100}%)`
+        }
+
+        prevbtn.addEventListener('click', ()=> {
+            if(sliderat == 0) return;
+            --sliderat
+            moveSlider()
+        })
+
+        nextbtn.addEventListener('click', ()=> {
+            if(sliderat == 6) return;
+            ++sliderat
+            moveSlider()
+        })
+
+    </script>
+</body>
+
+</html>
